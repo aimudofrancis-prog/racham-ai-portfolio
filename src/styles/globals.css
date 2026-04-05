@@ -1,23 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0088ff;
+  --color-background: #0a0a0a;
+  --color-accent: #1e1e1e;
+}
 
 :root {
-  --background: #0A0A0A;
-  --primary: #0088FF;
-  --accent: #1E1E1E;
+  --background: 10 10 10;
+  --foreground: 255 255 255;
 }
 
+/* Base resets for the Elite aesthetic */
 @layer base {
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
   body {
-    @apply bg-[#0A0A0A] text-white antialiased selection:bg-blue-500/30;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: #0a0a0a;
+    color: white;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
+/* Custom Racham Utility Classes */
 @layer components {
   /* The Architectural Grid from your screenshot */
   .bg-grid-pattern {
@@ -27,27 +33,29 @@
       linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 
-  /* Glowing "Elite" effect for buttons and cards */
   .glow-blue {
     box-shadow: 0 0 20px rgba(0, 136, 255, 0.15);
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #60a5fa, #2563eb);
   }
 }
 
-/* Custom Scrollbar for the Command Center */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E1E1E;
+  background: #1e1e1e;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0088FF;
+  background: #0088ff;
 }
