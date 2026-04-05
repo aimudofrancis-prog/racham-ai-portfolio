@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
-import { Send, Mail, Linkedin, Globe } from 'lucide-react';
+import { Send, Mail, Github, Twitter, Globe } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -21,14 +21,18 @@ export default function Contact() {
           </p>
           
           <div className="space-y-6">
-            <div className="flex items-center gap-4 text-gray-300 hover:text-blue-400 transition-colors">
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10"><Mail size={20} /></div>
-              <span className="font-mono text-sm">ceo@racham.ai</span>
-            </div>
-            <div className="flex items-center gap-4 text-gray-300 hover:text-blue-400 transition-colors">
-              <div className="p-3 bg-white/5 rounded-lg border border-white/10"><Linkedin size={20} /></div>
-              <span className="font-mono text-sm">linkedin.com/in/racham-ai</span>
-            </div>
+            <a href="mailto:ceo@racham.ai" className="flex items-center gap-4 text-gray-300 hover:text-blue-400 transition-colors group">
+              <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50"><Mail size={20} /></div>
+              <span className="font-mono text-sm tracking-tighter">ceo@racham.ai</span>
+            </a>
+            <a href="https://github.com/Racham-Tech" target="_blank" className="flex items-center gap-4 text-gray-300 hover:text-blue-400 transition-colors group">
+              <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50"><Github size={20} /></div>
+              <span className="font-mono text-sm tracking-tighter">github.com/Racham-Tech</span>
+            </a>
+            <a href="https://x.com/RachamTech1509" target="_blank" className="flex items-center gap-4 text-gray-300 hover:text-blue-400 transition-colors group">
+              <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50"><Twitter size={20} /></div>
+              <span className="font-mono text-sm tracking-tighter">@RachamTech1509</span>
+            </a>
           </div>
         </motion.div>
 
@@ -39,7 +43,6 @@ export default function Contact() {
           viewport={{ once: true }}
           className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 relative overflow-hidden"
         >
-          {/* Subtle Glow background */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
           
           <form className="space-y-6 relative z-10">
@@ -48,7 +51,7 @@ export default function Contact() {
               <input 
                 type="text" 
                 placeholder="Name or Organization" 
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all placeholder:text-gray-700"
               />
             </div>
             <div>
@@ -56,11 +59,12 @@ export default function Contact() {
               <textarea 
                 rows={4}
                 placeholder="Describe the automation or AI project..." 
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all resize-none"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all resize-none placeholder:text-gray-700"
               />
             </div>
             
             <motion.button 
+              type="button"
               whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(0, 136, 255, 0.3)" }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
