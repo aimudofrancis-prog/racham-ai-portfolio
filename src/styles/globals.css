@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0A0A;
+  --primary: #0088FF;
+  --accent: #1E1E1E;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-[#0A0A0A] text-white antialiased selection:bg-blue-500/30;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  /* The Architectural Grid from your screenshot */
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  /* Glowing "Elite" effect for buttons and cards */
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(0, 136, 255, 0.15);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600;
+  }
+}
+
+/* Custom Scrollbar for the Command Center */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E1E1E;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0088FF;
+}
