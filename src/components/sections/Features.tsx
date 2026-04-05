@@ -1,34 +1,55 @@
 'use client'
 import { motion } from 'framer-motion';
-import { Database, Bot, TrendingUp, Cpu, ShieldCheck, Zap } from 'lucide-react';
-
-const allProjects = [
-  { title: "TaxPilot V2", desc: "Automated SME tax compliance engine for Nigeria.", icon: <Database />, tag: "FinTech" },
-  { title: "SOSBI Interface", desc: "Next-gen AI conversational UI for business orchestration.", icon: <Bot />, tag: "AI/UX" },
-  { title: "Prodigy Growth", desc: "Autonomous SEO content pipeline generating organic traffic.", icon: <TrendingUp />, tag: "Growth" },
-  { title: "LegalBot RAG", desc: "Legal document analysis using Vector Embeddings.", icon: <ShieldCheck />, tag: "LegalTech" },
-  { title: "Nexus CRM", desc: "AI-driven customer relationship automation for SMEs.", icon: <Zap />, tag: "Automation" },
-  { title: "Market Mind", desc: "Predictive analytics for Nigerian retail supply chains.", icon: <Cpu />, tag: "Data" }
-];
+import { PROJECTS } from '@/lib/constants';
 
 export default function Features() {
   return (
     <section id="features" className="py-24 px-6 max-w-7xl mx-auto">
       <div className="mb-16">
-        <h2 className="text-blue-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-2">Portfolio</h2>
-        <h3 className="text-4xl font-bold text-white">Active Deployments</h3>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-blue-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-2">Portfolio</h2>
+          <h3 className="text-4xl font-bold text-white tracking-tight">Active Deployments</h3>
+        </motion.div>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {allProjects.map((p, i) => (
+        {PROJECTS.map((project, i) => (
           <motion.div 
-            key={i} 
-            whileHover={{ y: -5 }}
-            className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-blue-500/50 transition-all group"
+            key={project.id} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -8, borderColor: 'rgba(0, 136, 255, 0.4)' }}
+            className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] transition-all group"
           >
-            <div className="text-blue-500 mb-4 group-hover:scale-110 transition-transform">{p.icon}</div>
-            <span className="text-[9px] text-blue-400 font-bold uppercase tracking-widest bg-blue-400/10 px-2 py-0.5 rounded">{p.tag}</span>
-            <h4 className="text-xl font-bold text-white mt-4 mb-2">{p.title}</h4>
-            <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
+            <div className="text-blue-500 mb-6 group-hover:scale-110 group-hover:text-blue-400 transition-all">
+              <project.icon size={28} strokeWidth={1.5} />
+            </div>
+            
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-[9px] text-blue-400 font-bold uppercase tracking-widest bg-blue-400/10 px-2 py-0.5 rounded">
+                {project.tag}
+              </span>
+              <div className="h-1 w-1 rounded-full bg-white/20" />
+              <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+                {project.status}
+              </span>
+            </div>
+
+            <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
+            <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              {project.desc}
+            </p>
+            
+            <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+               <div className="h-1 w-1 rounded-full bg-green-500 animate-pulse" />
+               <span className="text-[10px] text-gray-400 uppercase font-mono">Infrastructure_Verified</span>
+            </div>
           </motion.div>
         ))}
       </div>
