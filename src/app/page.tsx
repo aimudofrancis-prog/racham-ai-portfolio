@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#0A0A0A] overflow-x-hidden pt-20">
       <Navbar />
-      <Hero />
-      <About />
-      <Features />
-      <TaxPilotShowcase />
-      <TechStack />
+      <div id="home"><Hero /></div>
+      <div id="about"><About /></div>
+      <div id="features"><Features /></div>
+      <div id="taxpilot"><TaxPilotShowcase /></div>
+      <div id="tech"><TechStack /></div>
       <Footer />
     </main>
   );
